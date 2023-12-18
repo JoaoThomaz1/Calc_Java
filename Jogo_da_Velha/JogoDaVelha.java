@@ -10,9 +10,11 @@ public class JogoDaVelha {
       String vtoria="";
       Scanner scan=new Scanner(System.in);
 
+      inciarJogo(velha);
+
       while(game){
-         desenhaogo(velha);
-         vitoria=verificaVitoria(velha)
+         desenhaJogo(velha);
+         vitoria=verificaVitoria(velha);
 
          if (!vitoria.equals("")){
             System.out.printf("Jogador %s venceu%n", vitoria);
@@ -20,6 +22,13 @@ public class JogoDaVelha {
          }
 
          try{
+            if(verificarJogada.equals(velha,jogar(scan,simboloAtual), simboloAtual)){
+               if(simboloAtual=='X'){
+                  simboloAtual='O';
+               }else{
+                  simboloAtual='X';
+               }
+            }
 
          }catch(Exception e){
             System.out.printf("ERRO");
@@ -31,7 +40,7 @@ public class JogoDaVelha {
 
    }
 
-   public static void desenhaogo(Campo[][] velha){
+   public static void desenhaJogo(Campo[][] velha){
       //limparTela()
       System.out.println("        0    1     2");
       System.out.printf("0   %c | %c | %c %n", velha[0][0].getSimbolo(), velha[0][1].getSimbolo(), velha[0][2].getSimbolo());
@@ -47,12 +56,29 @@ public class JogoDaVelha {
       }
    }
 
-   public void Boolean verificarJogada(Campos[][] velha, int p[], char simboloAtual){
-      if(velha[p[0]][p[1]].getSimbolo()==''){
+   public static int[] jogar(Scanner scan,char sa){
+      int p[]=new int[2];
+      System.out.printf("%s %c%n","Quem Joga: ", sa);
+      System.out.print("Informe a linha: ");
+      p[0]=scan.nextInt();
+      System.out.print("Informe a coluna: ");
+      p[1]=scan.nextInt();
+   }
+
+   public static Boolean verificarJogada(Campo[][] velha,int p[],char simboloAtual){
+      if(velha[p[0]][p[1]].getSimbolo()==' '){
          velha[p[0]][p[1]].setSimbolo(simboloAtual);
          return true;
       }else{
          return false;
+      }
+   }
+
+   public static void inciarJogo(Campo[][] velha) {
+      for(int 1=0;1<3;1++){
+         for(int c=0;c<3;c++){
+            velha[1][c]=new Campo();
+         }
       }
    }
 
