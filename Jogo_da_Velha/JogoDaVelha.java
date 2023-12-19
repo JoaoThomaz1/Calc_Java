@@ -7,7 +7,7 @@ public class JogoDaVelha {
       Campo[][] velha=new Campo[3][3];
       char simboloAtual='X';
       Boolean game=true;
-      String vtoria="";
+      String vitoria="";
       Scanner scan=new Scanner(System.in);
 
       inciarJogo(velha);
@@ -22,7 +22,7 @@ public class JogoDaVelha {
          }
 
          try{
-            if(verificarJogada.equals(velha,jogar(scan,simboloAtual), simboloAtual)){
+            if(verificarJogada(velha,jogar(scan,simboloAtual), simboloAtual)){
                if(simboloAtual=='X'){
                   simboloAtual='O';
                }else{
@@ -42,12 +42,12 @@ public class JogoDaVelha {
 
    public static void desenhaJogo(Campo[][] velha){
       //limparTela()
-      System.out.println("        0    1     2");
+      System.out.println("    0   1   2");
       System.out.printf("0   %c | %c | %c %n", velha[0][0].getSimbolo(), velha[0][1].getSimbolo(), velha[0][2].getSimbolo());
-      System.out.println("       ---------------");
+      System.out.println("   -----------");
       System.out.printf("1   %c | %c | %c %n", velha[1][0].getSimbolo(), velha[1][1].getSimbolo(), velha[1][2].getSimbolo());      
-      System.out.println("       ---------------");
-      System.out.printf("1   %c | %c | %c %n", velha[2][0].getSimbolo(), velha[2][1].getSimbolo(), velha[2][2].getSimbolo());
+      System.out.println("   -----------");
+      System.out.printf("2   %c | %c | %c %n", velha[2][0].getSimbolo(), velha[2][1].getSimbolo(), velha[2][2].getSimbolo());
    }
 
    public static void limparTela() {
@@ -56,13 +56,14 @@ public class JogoDaVelha {
       }
    }
 
-   public static int[] jogar(Scanner scan,char sa){
+   public static int[] jogar(Scanner scan,char sa) {
       int p[]=new int[2];
       System.out.printf("%s %c%n","Quem Joga: ", sa);
       System.out.print("Informe a linha: ");
       p[0]=scan.nextInt();
       System.out.print("Informe a coluna: ");
       p[1]=scan.nextInt();
+      return p;
    }
 
    public static Boolean verificarJogada(Campo[][] velha,int p[],char simboloAtual){
@@ -75,9 +76,9 @@ public class JogoDaVelha {
    }
 
    public static void inciarJogo(Campo[][] velha) {
-      for(int 1=0;1<3;1++){
+      for(int l=0;l<3;l++){
          for(int c=0;c<3;c++){
-            velha[1][c]=new Campo();
+            velha[l][c]=new Campo();
          }
       }
    }
