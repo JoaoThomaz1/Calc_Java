@@ -13,6 +13,7 @@ public class JogoDaVelha {
       inciarJogo(velha);
 
       while(game){
+         limparTela();
          desenhaJogo(velha);
          vitoria=verificaVitoria(velha);
 
@@ -69,6 +70,7 @@ public class JogoDaVelha {
    public static Boolean verificarJogada(Campo[][] velha,int p[],char simboloAtual){
       if(velha[p[0]][p[1]].getSimbolo()==' '){
          velha[p[0]][p[1]].setSimbolo(simboloAtual);
+
          return true;
       }else{
          return false;
